@@ -10,5 +10,5 @@ package Modelo;
  * @author joseb
  */
 public class Estudiante {
-    
+    //Hola soy juanma y gobierno como canto
 }
