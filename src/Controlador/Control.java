@@ -10,5 +10,5 @@ package Controlador;
  * @author JoseLBeltranA - EdwarAMarinM
  */
 public class Control {
-    
+    //Hola
 }
