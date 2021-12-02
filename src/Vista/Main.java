@@ -7,7 +7,7 @@ package Vista;
 
 /**
  *
- * @author edwar
+ * @author JoseLBeltranA - EdwarAMarinM
  */
 public class Main {
 

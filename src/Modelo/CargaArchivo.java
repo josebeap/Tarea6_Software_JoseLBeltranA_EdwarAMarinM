@@ -7,7 +7,7 @@ package Modelo;
 
 /**
  *
- * @author joseb
+ * @author JoseLBeltranA - EdwarAMarinM
  */
 public class CargaArchivo {
     
