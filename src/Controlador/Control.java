@@ -7,8 +7,8 @@ package Controlador;
 
 /**
  *
- * @author edwar
+ * @author JoseLBeltranA - EdwarAMarinM
  */
 public class Control {
-    
+    //Hola
 }
