@@ -23,7 +23,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
+        long milisInicio = System.currentTimeMillis();
+
         
         JFileChooser chooser = new JFileChooser();
 
@@ -40,7 +41,11 @@ public class Main {
             System.out.println(rutaArchivo);
         }
         
-        File archivoAConvertir=new File(rutaArchivo);
+        File archivoAProcesar=new File(rutaArchivo);
+        
+        long milisFinal = System.currentTimeMillis();
+        System.out.println(milisFinal - milisInicio);
+
     }
     
 }

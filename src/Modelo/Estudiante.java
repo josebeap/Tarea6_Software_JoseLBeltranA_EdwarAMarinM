@@ -10,12 +10,17 @@ package Modelo;
  * @author JoseLBeltranA - EdwarAMarinM
  */
 public class Estudiante {
-    //Hola soy juanma y gobierno como canto
     
     private String cedula;
     private String nombre;
     private int cantidadMaterias;
 
+    /**
+     * 
+     * @param cedula
+     * @param nombre
+     * @param cantidadMaterias 
+     */
     public Estudiante(String cedula, String nombre, int cantidadMaterias) {
         this.cedula = cedula;
         this.nombre = nombre;

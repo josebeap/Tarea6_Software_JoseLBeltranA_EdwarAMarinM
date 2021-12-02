@@ -17,24 +17,24 @@ import java.util.ArrayList;
  * @author JoseLBeltranA - EdwarAMarinM
  */
 public class CargaArchivo {
-    //Hola
+
+    public CargaArchivo() {
+    }
+    
     /**
-     * Método que recibe un archivo y lo divide por cada línea. 
+     * Recibe un archivo y extrae linea por linea
      *
-     * @param archivoAConvertir el archivo que se leerá y convertirá
-     * @return lista con cada una de las líneas del archivo
-     * @throws FileNotFoundException se lanza la excepcion si no se encuentra el
-     * archivo
-     * @throws IOException Si el archivo no pudo leerse correctamente
-     * @throws ControlArchivoException Si el archivo no tiene formato .txt
+     * @param archivoLeer es el archivo que sera procesado para extraer su información
+     * @return Lista con cada linea del archivo de texto
+     * @throws java.io.FileNotFoundException
      */
-    public ArrayList<String> convertirArchivo(File archivoAConvertir)
+    public ArrayList<String> convertirArchivo(File archivoLeer)
             throws FileNotFoundException, IOException {
         
         
-        ArrayList<String> datosString = new ArrayList<>();
+        ArrayList<String> datos = new ArrayList<>();
 
-        File archivo = new File(archivoAConvertir.getPath());
+        File archivo = new File(archivoLeer.getPath());
         FileReader fileReader = new FileReader(archivo);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String linea;
@@ -42,14 +42,10 @@ public class CargaArchivo {
         while ((linea = bufferedReader.readLine()) != null) {
             String[] palabrasLineaComas = linea.split("\n");
             for (String palabra : palabrasLineaComas) {
-                datosString.add(palabra);
+                datos.add(palabra);
 
             }
-
         }
-
-
-        return datosString;
-
+        return datos;
     }
 }
