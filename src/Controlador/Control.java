@@ -19,14 +19,19 @@ import javax.swing.JOptionPane;
  */
 public class Control {
     
-    private ArrayList<Estudiante> estudiantes;
+    private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
     private CargaArchivo archivo;
+
+    public Control() {
+    }
+    
+    
     
     /**
      * 
      * @param lista 
      */
-    public void validarEstudiante(List<String> lista){  
+    public void validarEstudiante(ArrayList<String> lista){  
         int contador=0;
             for (String datos : lista) {
                 contador++;
@@ -37,12 +42,13 @@ public class Control {
                             + "la estructura necesaria");
                     continue;
                 }
-                if (this.buscarEstudiante(inscripcionDividida[1]) != true) {
+                if (this.buscarEstudiante(inscripcionDividida[0]) == false) {
                     Estudiante estudianteTemporal = 
                             this.crearEstudiante(inscripcionDividida[0],
                                     inscripcionDividida[1]);
                     this.estudiantes.add(estudianteTemporal);
                 }
+                
             }
         this.resultadoFinal();
     }
@@ -90,10 +96,12 @@ public class Control {
      * @return 
      */
     public boolean buscarEstudiante(String cedula){
-        for (Estudiante estudiante : estudiantes) {
-            if(estudiante.getCedula().equals(cedula)){
-                this.aumentarCantidadMaterias(estudiante);
-                return true;
+        if (estudiantes != null){
+            for (Estudiante estudiante : estudiantes) {
+                if(estudiante.getCedula().equals(cedula)){
+                    this.aumentarCantidadMaterias(estudiante);
+                    return true;
+                }
             }
         }
         return false;

@@ -17,14 +17,13 @@ import javax.swing.JFileChooser;
  */
 public class Main {
     
-    static String rutaArchivo;
-    static Control control;
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        String rutaArchivo = "";
+        Control control = new Control();
         
         long milisInicio = System.currentTimeMillis();
 
