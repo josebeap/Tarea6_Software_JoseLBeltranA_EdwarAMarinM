@@ -21,10 +21,10 @@ public class Estudiante {
      * @param nombre
      * @param cantidadMaterias 
      */
-    public Estudiante(String cedula, String nombre, int cantidadMaterias) {
+    public Estudiante(String cedula, String nombre) {
         this.cedula = cedula;
         this.nombre = nombre;
-        this.cantidadMaterias = cantidadMaterias;
+        this.cantidadMaterias = 1;
     }
 
     /**

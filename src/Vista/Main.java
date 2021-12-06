@@ -5,8 +5,10 @@
  */
 package Vista;
 
+import Controlador.Control;
 import java.awt.Component;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 
 /**
@@ -16,11 +18,12 @@ import javax.swing.JFileChooser;
 public class Main {
     
     static String rutaArchivo;
+    static Control control;
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
         long milisInicio = System.currentTimeMillis();
@@ -42,6 +45,8 @@ public class Main {
         }
         
         File archivoAProcesar=new File(rutaArchivo);
+        
+        control.ingresarRutaArchivo(archivoAProcesar);
         
         long milisFinal = System.currentTimeMillis();
         System.out.println(milisFinal - milisInicio);

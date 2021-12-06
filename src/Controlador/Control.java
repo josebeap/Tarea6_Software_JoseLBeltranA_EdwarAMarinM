@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,8 +26,25 @@ public class Control {
      * 
      * @param lista 
      */
-    public void validarEstudiante(List lista){  
-        
+    public void validarEstudiante(List<String> lista){  
+        int contador=0;
+            for (String datos : lista) {
+                contador++;
+                String[] inscripcionDividida = datos.split(",");
+                if (inscripcionDividida.length != 4) {
+                    JOptionPane.showMessageDialog(null,"El registro en la línea "+ 
+                            contador+" no cumple con "
+                            + "la estructura necesaria");
+                    continue;
+                }
+                if (this.buscarEstudiante(inscripcionDividida[1]) != true) {
+                    Estudiante estudianteTemporal = 
+                            this.crearEstudiante(inscripcionDividida[0],
+                                    inscripcionDividida[1]);
+                    this.estudiantes.add(estudianteTemporal);
+                }
+            }
+        this.resultadoFinal();
     }
     
     /**
@@ -36,7 +54,8 @@ public class Control {
      * @return 
      */
     public Estudiante crearEstudiante(String cedula, String nombre){
-        return null;
+        Estudiante estudiante = new Estudiante(cedula,nombre);
+        return estudiante;
     }
     
     /**
@@ -45,13 +64,12 @@ public class Control {
      * @return listaDatos con los datos por linea del archivo
      * @throws IOException 
      */
-    public List ingresarRutaArchivo(File archivoAProcesar) throws IOException{
+    public void ingresarRutaArchivo(File archivoAProcesar) throws IOException{
         ArrayList<String> listaDatos = new ArrayList<String>();
         CargaArchivo controlArchivo = new CargaArchivo();
 
         listaDatos = controlArchivo.convertirArchivo(archivoAProcesar);
-     
-        return listaDatos;
+        this.validarEstudiante(listaDatos);
     }
     
     /**
@@ -59,8 +77,11 @@ public class Control {
      * @param lista
      * @return 
      */
-    public String resultadoFinal(List lista){
-        return null;
+    public void resultadoFinal(){
+        for (Estudiante estudiante : estudiantes) {
+            System.out.println(estudiante.getNombre()+"        " +estudiante.getCantidadMaterias()+
+                    " materias");
+        }
     }
     
     /**
@@ -69,6 +90,12 @@ public class Control {
      * @return 
      */
     public boolean buscarEstudiante(String cedula){
+        for (Estudiante estudiante : estudiantes) {
+            if(estudiante.getCedula().equals(cedula)){
+                this.aumentarCantidadMaterias(estudiante);
+                return true;
+            }
+        }
         return false;
     }
     
@@ -77,6 +104,6 @@ public class Control {
      * @param estudiante 
      */
     public void aumentarCantidadMaterias(Estudiante estudiante){
-        
+        estudiante.setCantidadMaterias(estudiante.getCantidadMaterias()+1);
     }
 }
